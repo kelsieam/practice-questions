@@ -203,12 +203,12 @@ its entire row and column are set to 0
 """
 
 
-sample = [
-    [1, 4, 6],
-    [2, 1, 3],
-    [8, 9, 1],
-    [4, 1, 5]
-]
+# sample = [
+#     [1, 4, 6],
+#     [2, 1, 3],
+#     [8, 9, 1],
+#     [4, 1, 5]
+# ]
 
 # sample[1][1]
 
@@ -237,42 +237,93 @@ sample = [
 #                 matrix[i][i2] = 0
 
 #     return matrix
-            
 
 
 
+# print(make_zero(sample))
 
 
-# def zero_matrix(matrix):
+"""
+assume you have a method is_substring which checks if one 
+word is a substring of another. given two strings, s1 and s2, 
+write code to check if s2 is a rotation of s1 using only one
+call to is_substring ("waterbottle" is a rotation of "erbottlewat")
+"""
+
+# def is_substring(s1, s2):
+
+#     pass
+
+# repeated = s2 + s2
+# if s1 in repeated:
+#     return True
 
 
-#                 make_zero(matrix, i, i2)
+"""
+Chap 2 - linked lists
+"""
 
-#     return matrix
-
-# def make_zero(matrix, i, i2):
-#     m = len(matrix)
-#     print(m)    
-#     for row in matrix:
-#         print(row)
-#         l = len(row)
-#         print(l)
-#         for i in range(0, l - 1):
-#             matrix[i][l] = 0
-
-#     return matrix
+"""
+write code to remove duplicates from an unsorted linked list.
+how would you solve this problem if a temp buffer is not allowed?
+"""
 
 
-print(make_zero(sample))
+class Node:
+    def __init__(self, dataval=None):
+        self.dataval = dataval
+        self.nextval = None
+
+class SLinkedList:
+    def __init__(self):
+        self.headval = None
+
+    def listprint(self):
+        printval = self.headval
+        while printval is not None:
+            print (printval.dataval)
+            printval = printval.nextval
+    def AtBeginning(self, newdata):
+        NewNode = Node(newdata)
+
+list1 = SLinkedList()
+list1.headval = Node(1)
+e2 = Node(2)
+e3 = Node(3)
+e4 = Node(4)
+e5 = Node(3)
+e6 = Node(6)
+
+list1.headval.nextval = e2
+e2.nextval = e3
+e3.nextval = e4
+e4.nextval = e5
+e5.nextval = e6
 
 
+def remove_dupes(head):
+    cur = head.headval
+    seen = []
+    prev = None
+    while cur:
+        print(cur.dataval, 'cur.dataval', cur.nextval, 'cur.nextval')
+        
+        if cur.dataval in seen:
+            print('in if', cur.dataval)
+            prev.nextval = cur.nextval
+        
+        seen.append(cur.dataval)
+        print(seen, cur.dataval, 'line 315')
+        prev = cur
+        if cur.nextval:
+            cur = cur.nextval
+    print(seen)
+
+    
 
 
-# [
-#     [1, 4, 6],
-#     [2, 0, 3],
-#     [8, 9, 1],
-#     [4, 1, 0]
-# ]
+list1.listprint()
+remove_dupes(list1)
 
+list1.listprint()
 
