@@ -13,3 +13,5 @@ def find_primes(n):
 
 
 print(find_primes(2000))
+
+# wow you sure are a smarty pants kelsie
